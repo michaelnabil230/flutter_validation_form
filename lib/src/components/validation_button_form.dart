@@ -6,9 +6,9 @@ class ValidationButtonForm<B extends StateStreamable<S>, S>
   const ValidationButtonForm({
     required this.builder,
     super.key,
-    B? bloc,
-    BlocBuilderCondition<S>? buildWhen,
-  }) : super(bloc: bloc, buildWhen: buildWhen);
+    super.bloc,
+    super.buildWhen,
+  });
 
   final BlocWidgetBuilder<S> builder;
 

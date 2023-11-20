@@ -1,4 +1,5 @@
-import 'dart:math';
+import 'dart:math' hide log;
+import 'dart:developer';
 
 import 'package:validation_form/validation_form.dart';
 
@@ -52,20 +53,20 @@ class LoginForm extends FormCubit {
 
   @override
   void onSubmit() async {
-    print('===Start===');
+    log('===Start===');
     loadingFrom();
     await Future.delayed(const Duration(seconds: 2));
-    print(email.state.value);
-    print(password.state.value);
-    print('===End===');
+    log(email.state.value);
+    log(password.state.value);
+    log('===End===');
 
     if (Random().nextBool()) {
       email.addErrors(['Massage error form backend']);
       refreshForm();
-      print('From has errors form backend');
+      log('From has errors form backend');
     } else {
       reset();
-      print('From passed successfully');
+      log('From passed successfully');
     }
   }
 }

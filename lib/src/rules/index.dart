@@ -1,47 +1,47 @@
-/// * Colors
+// Colors
 export 'colors/is_hex_color.dart';
 
-/// * Dates
+// Dates
 export 'dates/date_after.dart';
 export 'dates/date_before.dart';
 export 'dates/is_date.dart';
 
-/// * IT
+// IT
 export 'it/is_boolean.dart';
 export 'it/is_email.dart';
 export 'it/is_port.dart';
 export 'it/regx.dart';
 
-/// * Languages
+// Languages
 export 'languages/is_ltr.dart';
 export 'languages/is_rtl.dart';
 
-/// * Lists
+// Lists
 export 'lists/contains_any.dart';
 export 'lists/is_in.dart';
 export 'lists/is_not_in.dart';
 export 'lists/not_contains_any.dart';
 export 'lists/not_repeat_value.dart';
 
-/// * Magic
+// Magic
 export 'magic/required_when.dart';
 export 'magic/sometimes.dart';
 
-/// * Password
+// Password
 export 'password/password.dart';
 export 'password/confirmed_password.dart';
 
-/// * Numbers
+// Numbers
 export 'numbers/is_number_only.dart';
 export 'numbers/is_number.dart';
 export 'numbers/max_value.dart';
 export 'numbers/min_value.dart';
 
-/// * Phone
+// Phone
 export 'phone/is_egy_phone.dart';
 export 'phone/is_ksa_phone.dart';
 
-/// * Text
+// Text
 export 'text/contains.dart';
 export 'text/ends_with.dart';
 export 'text/is_empty.dart';
@@ -58,7 +58,7 @@ export 'text/same.dart';
 export 'text/is_username.dart';
 export 'text/alpha_numeric.dart';
 
-/// * Url
+// Url
 export 'urls/is_facebook_url.dart';
 export 'urls/is_instagram_url.dart';
 export 'urls/is_url.dart';

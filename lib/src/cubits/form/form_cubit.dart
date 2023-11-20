@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:equatable/equatable.dart';
+
 import 'package:validation_form/validation_form.dart';
 
 part 'form_state.dart';
@@ -8,11 +7,7 @@ part 'form_state.dart';
 abstract class FormCubit extends Cubit<FormState> {
   FormCubit({
     FormStatus status = FormStatus.enable,
-    bool isEdit = false,
-  }) : super(FormState(
-          status: status,
-          isEdit: isEdit,
-        )) {
+  }) : super(FormState(status: status)) {
     _fields = initializeFields();
 
     _addStreamToFields();
@@ -27,7 +22,7 @@ abstract class FormCubit extends Cubit<FormState> {
 
   List<FieldCubit> initializeFields();
 
-  FutureOr<void> onSubmit();
+  bool get isEdit => false;
 
   void setShowErrorOnAllFields() {
     for (final field in fields) {
@@ -85,7 +80,7 @@ abstract class FormCubit extends Cubit<FormState> {
   }
 
   bool _isPasses() {
-    if (state.isEdit) {
+    if (isEdit) {
       bool noInvalid = !fields.any((field) => field.state.isInvalid);
       bool anyValid = fields.any((field) => field.state.isValid);
       bool anyInitial = fields.any((field) => field.state.isInitial);

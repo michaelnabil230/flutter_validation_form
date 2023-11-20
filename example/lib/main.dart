@@ -1,4 +1,5 @@
-import 'package:example/cubits/login_form.dart';
+import 'package:example/cubits/login/login_cubit.dart';
+import 'package:example/cubits/login/login_form.dart';
 import 'package:flutter/material.dart' hide FormState;
 import 'package:validation_form/validation_form.dart';
 
@@ -12,8 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: BlocProvider.value(
-        value: LoginForm(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => LoginForm()),
+          BlocProvider(create: (context) => LoginCubit(form: context.read())),
+        ],
         child: const LoginPage(),
       ),
     );
@@ -89,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                       builder: (context, state) {
                         return ElevatedButton(
                           onPressed: state.status.isEnable
-                              ? () => _loginFormCubit.onSubmit()
+                              ? () => context.read<LoginCubit>().onSubmit()
                               : null,
                           child: Text(switch (state.status) {
                             FormStatus.loading => 'loading',

@@ -6,6 +6,8 @@ import 'package:validation_form/validation_form.dart';
 class ValidationTextField extends StatefulWidget {
   final FieldCubit cubit;
 
+  final TextEditingController? controller;
+
   final Widget Function(
     BuildContext context,
     TextEditingController controller,
@@ -15,6 +17,7 @@ class ValidationTextField extends StatefulWidget {
   const ValidationTextField({
     super.key,
     required this.cubit,
+    this.controller,
     required this.field,
   });
 
@@ -29,8 +32,9 @@ class _ValidationTextFieldState extends State<ValidationTextField> {
 
   @override
   void initState() {
-    _controller = TextEditingController(text: widget.cubit.state.initialValue)
-      ..addListener(() => widget.cubit.setValue(_controller.text));
+    _controller = widget.controller ?? TextEditingController();
+    _controller.text = widget.cubit.state.initialValue;
+    _controller.addListener(() => widget.cubit.setValue(_controller.text));
     _subscription = widget.cubit.stream.listen(_cubitListener);
     super.initState();
   }
@@ -43,7 +47,9 @@ class _ValidationTextFieldState extends State<ValidationTextField> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    if (widget.controller == null) {
+      _controller.dispose();
+    }
     _subscription.cancel();
     super.dispose();
   }

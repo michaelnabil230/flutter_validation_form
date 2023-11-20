@@ -1,10 +1,7 @@
-import 'dart:math' hide log;
-import 'dart:developer';
-
 import 'package:validation_form/validation_form.dart';
 
 class LoginForm extends FormCubit {
-  LoginForm() : super(status: FormStatus.enable, isEdit: false);
+  LoginForm() : super(status: FormStatus.enable);
 
   late FieldCubit email;
 
@@ -50,23 +47,4 @@ class LoginForm extends FormCubit {
 
   @override
   List<FieldCubit> get fieldsDepends => [password, passwordConfirm];
-
-  @override
-  void onSubmit() async {
-    log('===Start===');
-    loadingFrom();
-    await Future.delayed(const Duration(seconds: 2));
-    log(email.state.value);
-    log(password.state.value);
-    log('===End===');
-
-    if (Random().nextBool()) {
-      email.addErrors(['Massage error form backend']);
-      refreshForm();
-      log('From has errors form backend');
-    } else {
-      reset();
-      log('From passed successfully');
-    }
-  }
 }

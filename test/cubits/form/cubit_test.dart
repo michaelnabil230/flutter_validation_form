@@ -1,13 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:validation_form/validation_form.dart';
 
 class TestFormCubit extends FormCubit {
-  TestFormCubit({
-    super.status,
-    super.isEdit,
-  });
+  TestFormCubit({super.status});
 
   @override
   List<FieldCubit> initializeFields() {
@@ -15,11 +10,6 @@ class TestFormCubit extends FormCubit {
       FieldCubit(attribute: 'field1', rules: () => [Required()]),
       FieldCubit(attribute: 'field2', rules: () => [Required()]),
     ];
-  }
-
-  @override
-  FutureOr<void> onSubmit() async {
-    // Mock form submission logic
   }
 }
 
@@ -29,7 +19,7 @@ void main() {
       final formCubit = TestFormCubit();
 
       expect(formCubit.state.status, FormStatus.disable);
-      expect(formCubit.state.isEdit, isFalse);
+      expect(formCubit.isEdit, isFalse);
       expect(formCubit.fields.length, 2);
     });
 

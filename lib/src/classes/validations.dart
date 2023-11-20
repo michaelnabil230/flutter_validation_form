@@ -1,4 +1,3 @@
-import 'package:validation_form/src/rules/rule.dart';
 import 'package:validation_form/validation_form.dart';
 
 class Validations {

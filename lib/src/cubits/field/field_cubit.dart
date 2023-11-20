@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:validation_form/validation_form.dart';
-import 'package:validation_form/src/rules/rule.dart';
 import 'package:validation_form/src/types/index.dart';
 
 part 'field_state.dart';

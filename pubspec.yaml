@@ -1,7 +1,7 @@
 name: validation_form
-description: "A new Flutter package project."
+description: "Reactive Forms heavily inspire this model-driven approach to handling form inputs and validations."
 version: 0.0.1
-# homepage:
+homepage: https://github.com/michaelnabil230/flutter_validation_form
 
 environment:
   sdk: ">=3.2.0 <4.0.0"

@@ -4,7 +4,7 @@ import 'package:validation_form/validation_form.dart';
 
 part 'form_state.dart';
 
-abstract class FormCubit extends Cubit<FormState> {
+abstract class FormCubit extends Cubit<FormState> with _Allies {
   FormCubit({
     FormStatus status = FormStatus.enable,
   }) : super(FormState(status: status)) {
@@ -75,26 +75,6 @@ abstract class FormCubit extends Cubit<FormState> {
     emit(state.copyWith(status: status, errors: errors));
   }
 
-  void changeStatus(FormStatus status) {
-    emit(state.copyWith(status: FormStatus.loading));
-  }
-
-  void loading() => changeStatus(FormStatus.loading);
-
-  void disable() => changeStatus(FormStatus.disable);
-
-  void enable() => changeStatus(FormStatus.enable);
-
-  bool get isEnable => state.status.isEnable;
-
-  bool get isDisable => state.status.isDisable;
-
-  bool get isLoading => state.status.isLoading;
-
-  bool get canSubmit => isDisable || isLoading;
-
-  Map<String, List<String>> get errors => state.errors;
-
   bool _isPasses() {
     if (isEdit) {
       bool noInvalid = !fields.any((field) => field.state.isInvalid);
@@ -108,4 +88,26 @@ abstract class FormCubit extends Cubit<FormState> {
 
     return fields.every((field) => field.state.isValid);
   }
+}
+
+mixin _Allies on Cubit<FormState> {
+  FormStatus get status => state.status;
+
+  bool get isEnable => status.isEnable;
+
+  bool get isDisable => status.isDisable;
+
+  bool get isLoading => status.isLoading;
+
+  bool get canSubmit => status.canSubmit;
+
+  Map<String, List<String>> get errors => state.errors;
+
+  void changeStatus(FormStatus status) => emit(state.copyWith(status: status));
+
+  void loading() => changeStatus(FormStatus.loading);
+
+  void disable() => changeStatus(FormStatus.disable);
+
+  void enable() => changeStatus(FormStatus.enable);
 }

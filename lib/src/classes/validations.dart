@@ -18,7 +18,7 @@ class Validations {
 
   static Rule get isPort => IsPort();
 
-  static Rule regx(RegExp regX) => RegExpRule(regX);
+  static Rule pattern(RegExp regExp) => PatternRule(regExp);
 
   static Rule get isLtr => IsLtr();
 
@@ -36,14 +36,14 @@ class Validations {
 
   static Rule notContainsAny(List<String> list) => NotContainsAny(list);
 
-  static Rule requiredWhen({
-    required bool condition,
-    required String conditionName,
-  }) =>
-      RequiredWhen(
-        condition: condition,
-        conditionName: conditionName,
-      );
+  // static Rule when({
+  //   required bool condition,
+  //   required String conditionName,
+  // }) =>
+  //     When(
+  //       condition: condition,
+  //       conditionName: conditionName,
+  //     );
 
   static Rule password({
     int min = 8,

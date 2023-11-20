@@ -1,3 +1,6 @@
+// Parent
+export 'rule.dart';
+
 // Colors
 export 'colors/is_hex_color.dart';
 
@@ -10,7 +13,7 @@ export 'dates/is_date.dart';
 export 'it/is_boolean.dart';
 export 'it/is_email.dart';
 export 'it/is_port.dart';
-export 'it/regx.dart';
+export 'it/pattern_rule.dart';
 
 // Languages
 export 'languages/is_ltr.dart';
@@ -21,9 +24,6 @@ export 'lists/contains_any.dart';
 export 'lists/is_in.dart';
 export 'lists/is_not_in.dart';
 export 'lists/not_contains_any.dart';
-
-// Magic
-export 'magic/required_when.dart';
 
 // Password
 export 'password/password.dart';

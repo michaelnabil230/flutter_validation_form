@@ -29,11 +29,7 @@ class ValidationNames {
 
   static const String alphaNumeric = 'alpha_numeric';
 
-  static const String requiredWhen = 'required_when';
-
   static const String mustContainsAny = 'must_contains_any';
-
-  static const String notRepeat = 'not_repeat';
 
   static const String mustNotContainsAny = 'must_not_contains_any';
 
@@ -44,6 +40,8 @@ class ValidationNames {
   static const String isNotEmailAddress = 'is_not_email_address';
 
   static const String isNotPort = 'is_not_port';
+
+  static const String pattern = 'pattern';
 
   static const String isIpAddress = 'is_ip_address';
 

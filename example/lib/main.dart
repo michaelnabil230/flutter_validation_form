@@ -34,6 +34,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   LoginForm get _loginFormCubit => context.read<LoginForm>();
 
+  final IsAdminNotifier isAdmin = IsAdminNotifier();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +45,20 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              ValidationTextField(
+                cubit: _loginFormCubit.name,
+                field: (context, controller, state) {
+                  return TextField(
+                    controller: controller,
+                    onTapOutside: (_) =>
+                        FocusManager.instance.primaryFocus?.unfocus(),
+                    decoration: InputDecoration(
+                      labelText: 'Name',
+                      errorText: state.error,
+                    ),
+                  );
+                },
+              ),
               ValidationTextField(
                 cubit: _loginFormCubit.email,
                 field: (context, controller, state) {
@@ -84,6 +100,22 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   );
                 },
+              ),
+              Row(
+                children: [
+                  const Text('Is admin'),
+                  const SizedBox(width: 10),
+                  ValueListenableBuilder<bool>(
+                    valueListenable: isAdmin,
+                    builder: (BuildContext context, bool value, child) {
+                      return Checkbox(
+                        value: isAdmin.value,
+                        onChanged: (_) =>
+                            _loginFormCubit.onChangedIsAdmin(isAdmin),
+                      );
+                    },
+                  ),
+                ],
               ),
               Center(
                 child: Row(

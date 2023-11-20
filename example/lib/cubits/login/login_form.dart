@@ -1,7 +1,14 @@
+import 'package:flutter/widgets.dart';
 import 'package:validation_form/validation_form.dart';
+
+class IsAdminNotifier extends ValueNotifier<bool> {
+  IsAdminNotifier() : super(false);
+}
 
 class LoginForm extends FormCubit {
   LoginForm() : super(status: FormStatus.enable);
+
+  late FieldCubit name;
 
   late FieldCubit email;
 
@@ -9,8 +16,22 @@ class LoginForm extends FormCubit {
 
   late FieldCubit passwordConfirm;
 
+  bool _isAdmin = true;
+
+  void onChangedIsAdmin(IsAdminNotifier isAdminNotifier) {
+    _isAdmin = !_isAdmin;
+    isAdminNotifier.value = !isAdminNotifier.value;
+    name.reset();
+  }
+
   @override
   List<FieldCubit> initializeFields() {
+    name = FieldCubit(
+      attribute: 'name',
+      rules: () =>
+          [Validations.required]..when(_isAdmin, [Validations.minLength(10)]),
+    );
+
     email = FieldCubit(
       attribute: 'email',
       validationMessages: {
@@ -27,21 +48,21 @@ class LoginForm extends FormCubit {
     password = FieldCubit(
       attribute: 'password',
       rules: () => [
-        Required(),
-        Password(min: 3),
-        ConfirmedPassword(passwordConfirm.state.value),
+        Validations.required,
+        Validations.password(min: 4),
+        Validations.confirmedPassword(passwordConfirm.state.value),
       ],
     );
 
     passwordConfirm = FieldCubit(
       attribute: 'password_confirm',
       rules: () => [
-        Required(),
-        Password(min: 3),
+        Validations.required,
+        Validations.password(min: 4),
       ],
     );
 
-    return [email, password, passwordConfirm];
+    return [name, email, password, passwordConfirm];
   }
 
   @override

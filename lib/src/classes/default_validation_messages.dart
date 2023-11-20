@@ -32,12 +32,8 @@ Map<String, ValidationMessage> defaultValidationMessages = {
       'The $attribute field must only contain numbers.',
   ValidationNames.alphaNumeric: (attribute, [_ = const []]) =>
       'The $attribute field must only contain letters and numbers.',
-  ValidationNames.requiredWhen: (attribute, [parameters = const []]) =>
-      'The $attribute field is required when ${parameters[0]} is met.',
   ValidationNames.mustContainsAny: (attribute, [parameters = const []]) =>
       'The $attribute field must contain at least one of the following: ${parameters[0]}.',
-  ValidationNames.notRepeat: (attribute, [_ = const []]) =>
-      'The $attribute field must not repeat previous entries.',
   ValidationNames.mustNotContainsAny: (attribute, [parameters = const []]) =>
       'The $attribute field must not contain any of the following: ${parameters[0]}.',
   ValidationNames.mustNotBeInList: (attribute, [parameters = const []]) =>
@@ -48,6 +44,8 @@ Map<String, ValidationMessage> defaultValidationMessages = {
       'The $attribute field must be a valid email address.',
   ValidationNames.isNotPort: (attribute, [_ = const []]) =>
       'The $attribute field must be a valid port number.',
+  ValidationNames.pattern: (attribute, [_ = const []]) =>
+      'The $attribute field does not match the pattern.',
   ValidationNames.isIpAddress: (attribute, [_ = const []]) =>
       'The $attribute field must be a valid IP address.',
   ValidationNames.isNotValid: (attribute, [_ = const []]) =>

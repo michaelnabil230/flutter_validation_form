@@ -13,8 +13,8 @@ void main() {
       expect(rule.isValid('+966512345678'), isTrue);
       expect(rule.isValid('0551234567'), isTrue);
       expect(rule.isValid('551234567'), isTrue);
-      expect(
-          rule.error, 'The phone field must be a valid Saudi Arabian phone number.');
+      expect(rule.error,
+          'The phone field must be a valid Saudi Arabian phone number.');
     });
 
     test('should return false if the input is not a valid KSA phone number',

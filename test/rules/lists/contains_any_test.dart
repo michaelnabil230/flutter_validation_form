@@ -23,7 +23,8 @@ void main() {
     });
 
     test('should respect case sensitivity when specified', () {
-      final rule = Validations.containsAny(['Foo', 'Bar', 'Baz'], caseSensitive: true);
+      final rule =
+          Validations.containsAny(['Foo', 'Bar', 'Baz'], caseSensitive: true);
 
       expect(rule.isValid('hello Foo world'), isTrue);
       expect(rule.isValid('testing Bar'), isTrue);

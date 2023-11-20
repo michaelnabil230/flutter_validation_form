@@ -11,7 +11,8 @@ void main() {
       expect(rule.isValid('01234567890'), isTrue);
       expect(rule.isValid('01000000000'), isTrue);
       expect(rule.isValid('01555555555'), isTrue);
-      expect(rule.error, 'The phone field must be a valid Egyptian phone number.');
+      expect(
+          rule.error, 'The phone field must be a valid Egyptian phone number.');
     });
 
     test(

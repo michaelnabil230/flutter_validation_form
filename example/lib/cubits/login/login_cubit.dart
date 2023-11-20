@@ -16,7 +16,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   void onSubmit() async {
     log('===Start===');
-    form.loadingFrom();
+    form.loading();
     await Future.delayed(const Duration(seconds: 2));
     log(form.email.state.value);
     log(form.password.state.value);
@@ -24,7 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
 
     if (Random().nextBool()) {
       form.email.addErrors(['Massage error form backend']);
-      form.refreshForm();
+      form.refresh();
       log('From has errors form backend');
     } else {
       form.reset();

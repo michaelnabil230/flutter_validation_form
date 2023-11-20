@@ -46,9 +46,9 @@ abstract class FormCubit extends Cubit<FormState> {
 
   void _addStreamToFields() {
     for (final field in fields) {
-      field.stream.listen((_) => refreshForm());
+      field.stream.listen((_) => refresh());
     }
-    refreshForm();
+    refresh();
   }
 
   void _addStreamToFieldsDepends() {
@@ -61,7 +61,7 @@ abstract class FormCubit extends Cubit<FormState> {
     }
   }
 
-  void refreshForm() {
+  void refresh() {
     bool passes = _isPasses();
 
     Map<String, List<String>> errors = {};
@@ -75,9 +75,25 @@ abstract class FormCubit extends Cubit<FormState> {
     emit(state.copyWith(status: status, errors: errors));
   }
 
-  void loadingFrom() {
+  void changeStatus(FormStatus status) {
     emit(state.copyWith(status: FormStatus.loading));
   }
+
+  void loading() => changeStatus(FormStatus.loading);
+
+  void disable() => changeStatus(FormStatus.disable);
+
+  void enable() => changeStatus(FormStatus.enable);
+
+  bool get isEnable => state.status.isEnable;
+
+  bool get isDisable => state.status.isDisable;
+
+  bool get isLoading => state.status.isLoading;
+
+  bool get canSubmit => isDisable || isLoading;
+
+  Map<String, List<String>> get errors => state.errors;
 
   bool _isPasses() {
     if (isEdit) {

@@ -61,7 +61,7 @@ void main() {
         field.setValue('John');
       }
 
-      formCubit.refreshForm();
+      formCubit.refresh();
 
       formCubit.state.errors.forEach((key, value) => expect(value, isEmpty));
       expect(formCubit.state.status, FormStatus.enable);
@@ -70,7 +70,7 @@ void main() {
     test('loadingFrom should update the status to loading', () {
       final formCubit = TestFormCubit();
 
-      formCubit.loadingFrom();
+      formCubit.loading();
 
       expect(formCubit.state.status, FormStatus.loading);
     });

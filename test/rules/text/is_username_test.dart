@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('IsUserName', () {
     test('should return true if the input is a valid username', () {
-      final rule = IsUserName();
+      final rule = Validations.isUserName;
 
       expect(rule.isValid('john_doe'), isTrue);
       expect(rule.isValid('johndoe123'), isTrue);
@@ -12,7 +12,7 @@ void main() {
     });
 
     test('should return false if the input is not a valid username', () {
-      final rule = IsUserName();
+      final rule = Validations.isUserName;
 
       expect(rule.isValid('john doe'), isFalse);
       expect(rule.isValid('john!doe'), isFalse);

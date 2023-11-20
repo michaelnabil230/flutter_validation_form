@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('IsEmail', () {
     test('should return true for valid email addresses', () {
-      final rule = IsEmail();
+      final rule = Validations.isEmail;
 
       expect(rule.isValid('test@example.com'), isTrue);
       expect(rule.isValid('user.name@example.com'), isTrue);
@@ -15,7 +15,7 @@ void main() {
     });
 
     test('should return false for invalid email addresses', () {
-      final rule = IsEmail();
+      final rule = Validations.isEmail;
 
       expect(rule.isValid(''), isFalse);
       expect(rule.isValid('notanemail'), isFalse);

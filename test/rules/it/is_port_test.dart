@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('IsPort', () {
     test('should return true for valid ports', () {
-      final rule = IsPort();
+      final rule = Validations.isPort;
 
       expect(rule.isValid('0'), isTrue);
       expect(rule.isValid('80'), isTrue);
@@ -14,7 +14,7 @@ void main() {
     });
 
     test('should return false for invalid ports', () {
-      final rule = IsPort();
+      final rule = Validations.isPort;
 
       expect(rule.isValid(''), isFalse);
       expect(rule.isValid('notaport'), isFalse);

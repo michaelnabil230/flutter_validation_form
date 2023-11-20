@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/colors/is_hex_color.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('IsHexColor', () {
     test('should return true if value is a valid hex color code', () {
-      final rule = IsHexColor();
+      final rule = Validations.isHexColor;
 
       expect(rule.isValid('#FFF'), isTrue);
       expect(rule.isValid('#ffffff'), isTrue);
@@ -14,7 +14,7 @@ void main() {
     });
 
     test('should return false if value is not a valid hex color code', () {
-      final rule = IsHexColor();
+      final rule = Validations.isHexColor;
 
       expect(rule.isValid('#GGG'), isFalse);
       expect(rule.isValid('#12345'), isFalse);

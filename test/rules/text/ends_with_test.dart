@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('EndsWith', () {
     test('should return true if the input ends with the specified substring',
         () {
-      final rule = EndsWith('.com');
+      final rule = Validations.endsWith('.com');
 
       expect(rule.isValid('example.com'), isTrue);
       expect(rule.isValid('test.com'), isTrue);
@@ -15,7 +15,7 @@ void main() {
     test(
         'should return false if the input does not end with the specified substring',
         () {
-      final rule = EndsWith('.com');
+      final rule = Validations.endsWith('.com');
 
       expect(rule.isValid('example.org'), isFalse);
       expect(rule.isValid('test.net'), isFalse);

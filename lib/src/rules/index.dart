@@ -13,6 +13,7 @@ export 'dates/is_date.dart';
 export 'it/is_boolean.dart';
 export 'it/is_email.dart';
 export 'it/is_port.dart';
+export 'it/is_ip_address.dart';
 export 'it/pattern_rule.dart';
 
 // Languages
@@ -61,3 +62,4 @@ export 'urls/is_facebook_url.dart';
 export 'urls/is_instagram_url.dart';
 export 'urls/is_url.dart';
 export 'urls/is_youtube_url.dart';
+export 'urls/is_secure_url.dart';

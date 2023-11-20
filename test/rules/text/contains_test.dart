@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('Contains', () {
     test('should return true if the input contains the specified substring',
         () {
-      final rule = Contains('world');
+      final rule = Validations.contains('world');
 
       expect(rule.isValid('hello world'), isTrue);
       expect(rule.isValid('goodbye world'), isTrue);
@@ -15,7 +15,7 @@ void main() {
     test(
         'should return false if the input does not contain the specified substring',
         () {
-      final rule = Contains('world');
+      final rule = Validations.contains('world');
 
       expect(rule.isValid('hello'), isFalse);
       expect(rule.isValid('goodbye'), isFalse);

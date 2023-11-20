@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('RangeLength', () {
     test('should return true if the input length is within the specified range',
         () {
-      final rule = RangeLength(min: 3, max: 6);
+      final rule = Validations.rangeLength(min: 3, max: 6);
 
       expect(rule.isValid('abc'), isTrue);
       expect(rule.isValid('hello'), isTrue);
@@ -17,7 +17,7 @@ void main() {
     test(
         'should return false if the input length is outside the specified range',
         () {
-      final rule = RangeLength(min: 10, max: 20);
+      final rule = Validations.rangeLength(min: 10, max: 20);
 
       expect(rule.isValid('hello'), isFalse);
       expect(rule.isValid('goodbye'), isFalse);

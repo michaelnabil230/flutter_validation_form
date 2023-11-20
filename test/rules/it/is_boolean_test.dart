@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('IsBool', () {
     test('should return true for valid boolean values', () {
-      final rule = IsBoolean();
+      final rule = Validations.isBoolean;
 
       expect(rule.isValid('true'), isTrue);
       expect(rule.isValid('false'), isTrue);
@@ -19,7 +19,7 @@ void main() {
     });
 
     test('should return false for invalid boolean values', () {
-      final rule = IsBoolean();
+      final rule = Validations.isBoolean;
 
       expect(rule.isValid(''), isFalse);
       expect(rule.isValid('notabool'), isFalse);

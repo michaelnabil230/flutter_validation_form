@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('Same', () {
     test('should return true if the input is the same as the specified value',
         () {
-      final rule = Same('password123');
+      final rule = Validations.same('password123');
 
       expect(rule.isValid('password123'), isTrue);
       expect(rule.isValid('password'), isFalse);
@@ -15,7 +15,7 @@ void main() {
     test(
         'should return false if the input is not the same as the specified value',
         () {
-      final rule = Same('hello');
+      final rule = Validations.same('hello');
 
       expect(rule.isValid('hello'), isTrue);
       expect(rule.isValid('goodbye'), isFalse);

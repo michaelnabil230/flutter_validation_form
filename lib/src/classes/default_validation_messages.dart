@@ -32,14 +32,22 @@ Map<String, ValidationMessage> defaultValidationMessages = {
       'The $attribute field must only contain numbers.',
   ValidationNames.alphaNumeric: (attribute, [_ = const []]) =>
       'The $attribute field must only contain letters and numbers.',
-  ValidationNames.mustContainsAny: (attribute, [parameters = const []]) =>
-      'The $attribute field must contain at least one of the following: ${parameters[0]}.',
-  ValidationNames.mustNotContainsAny: (attribute, [parameters = const []]) =>
-      'The $attribute field must not contain any of the following: ${parameters[0]}.',
-  ValidationNames.mustNotBeInList: (attribute, [parameters = const []]) =>
-      'The $attribute field must not be in the list: ${parameters[0]}.',
-  ValidationNames.mustBeInList: (attribute, [parameters = const []]) =>
-      'The $attribute field must be in the list: ${parameters[0]}.',
+  ValidationNames.mustContainsAny: (attribute, [parameters = const []]) {
+    final list = parameters[0] as List;
+    return 'The $attribute field must contain at least one of the following: ${list.join(', ')}.';
+  },
+  ValidationNames.mustNotContainsAny: (attribute, [parameters = const []]) {
+    final list = parameters[0] as List;
+    return 'The $attribute field must not contain any of the following: ${list.join(', ')}.';
+  },
+  ValidationNames.mustNotBeInList: (attribute, [parameters = const []]) {
+    final list = parameters[0] as List;
+    return 'The $attribute field must not be in the list: ${list.join(', ')}.';
+  },
+  ValidationNames.mustBeInList: (attribute, [parameters = const []]) {
+    final list = parameters[0] as List;
+    return 'The $attribute field must be in the list: ${list.join(', ')}.';
+  },
   ValidationNames.isNotEmailAddress: (attribute, [_ = const []]) =>
       'The $attribute field must be a valid email address.',
   ValidationNames.isNotPort: (attribute, [_ = const []]) =>

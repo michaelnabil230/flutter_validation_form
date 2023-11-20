@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart' hide isIn;
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('IsIn', () {
     test('should return true if value is in the specified list', () {
-      final rule = IsIn(['foo', 'bar', 'baz']);
+      final rule = Validations.isIn(['foo', 'bar', 'baz']);
 
       expect(rule.isValid('foo'), isTrue);
       expect(rule.isValid('bar'), isTrue);
@@ -12,7 +12,7 @@ void main() {
     });
 
     test('should return false if value is not in the specified list', () {
-      final rule = IsIn(['foo', 'bar', 'baz']);
+      final rule = Validations.isIn(['foo', 'bar', 'baz']);
 
       expect(rule.isValid('hello'), isFalse);
       expect(rule.isValid('world'), isFalse);

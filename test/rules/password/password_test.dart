@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('Password', () {
     test('should return true for a valid password', () {
-      final rule = Password(
+      final rule = Validations.password(
         min: 8,
         lowercase: true,
         uppercase: true,
@@ -17,7 +17,7 @@ void main() {
     });
 
     test('should return false for an invalid password', () {
-      final rule = Password(
+      final rule = Validations.password(
         min: 8,
         lowercase: true,
         uppercase: true,

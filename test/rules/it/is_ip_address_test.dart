@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/it/is_ip_address.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('IsIpAddress', () {
     test('should return true for valid IP addresses', () {
-      final rule = IsIpAddress();
+      final rule = Validations.isIpAddress;
 
       expect(rule.isValid('192.168.0.1'), isTrue);
       expect(rule.isValid('10.0.0.1'), isTrue);
@@ -14,7 +14,7 @@ void main() {
     });
 
     test('should return false for invalid IP addresses', () {
-      final rule = IsIpAddress();
+      final rule = Validations.isIpAddress;
 
       expect(rule.isValid(''), isFalse);
       expect(rule.isValid('notanipaddress'), isFalse);

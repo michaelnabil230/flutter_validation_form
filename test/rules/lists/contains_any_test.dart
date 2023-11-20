@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 void main() {
   group('ContainsAny', () {
     test('should return true if value contains any of the specified strings',
         () {
-      final rule = ContainsAny(['foo', 'bar', 'baz']);
+      final rule = Validations.containsAny(['foo', 'bar', 'baz']);
 
       expect(rule.isValid('hello foo world'), isTrue);
       expect(rule.isValid('testing bar'), isTrue);
@@ -15,7 +15,7 @@ void main() {
     test(
         'should return false if value does not contain any of the specified strings',
         () {
-      final rule = ContainsAny(['foo', 'bar', 'baz']);
+      final rule = Validations.containsAny(['foo', 'bar', 'baz']);
 
       expect(rule.isValid('hello world'), isFalse);
       expect(rule.isValid('testing'), isFalse);
@@ -23,7 +23,7 @@ void main() {
     });
 
     test('should respect case sensitivity when specified', () {
-      final rule = ContainsAny(['Foo', 'Bar', 'Baz'], caseSensitive: true);
+      final rule = Validations.containsAny(['Foo', 'Bar', 'Baz'], caseSensitive: true);
 
       expect(rule.isValid('hello Foo world'), isTrue);
       expect(rule.isValid('testing Bar'), isTrue);

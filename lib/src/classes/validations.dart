@@ -17,6 +17,8 @@ class Validations {
 
   static Rule get isPort => IsPort();
 
+  static Rule get isIpAddress => IsIpAddress();
+
   static Rule pattern(RegExp regExp) => PatternRule(regExp);
 
   static Rule get isLtr => IsLtr();
@@ -34,15 +36,6 @@ class Validations {
   static Rule isNotIn(List<String> list) => IsNotIn(list);
 
   static Rule notContainsAny(List<String> list) => NotContainsAny(list);
-
-  // static Rule when({
-  //   required bool condition,
-  //   required String conditionName,
-  // }) =>
-  //     When(
-  //       condition: condition,
-  //       conditionName: conditionName,
-  //     );
 
   static Rule password({
     int min = 8,
@@ -69,9 +62,9 @@ class Validations {
 
   static Rule minValue(int min) => MinValue(min);
 
-  static Rule get isEgyPhone => IsEgyptianPhone();
+  static Rule get isEgyptianPhone => IsEgyptianPhone();
 
-  static Rule get isKsaPhone => IsSaudiPhone();
+  static Rule get isSaudiPhone => IsSaudiPhone();
 
   static Rule contains(String other) => Contains(other);
 
@@ -88,7 +81,8 @@ class Validations {
 
   static Rule minLength(int min) => MinLength(min);
 
-  static Rule rangeLength(int max, int min) => RangeLength(max: max, min: min);
+  static Rule rangeLength({required int max, required int min}) =>
+      RangeLength(max: max, min: min);
 
   static Rule notContains(String other) => NotContains(other);
 
@@ -105,6 +99,8 @@ class Validations {
   static Rule get alphaNumeric => AlphaNumeric();
 
   static Rule get isUrl => IsUrl();
+
+  static Rule get isSecureUrl => IsSecureUrl();
 
   static Rule get isFacebookUrl => IsFacebookUrl();
 

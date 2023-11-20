@@ -1,4 +1,4 @@
-import 'package:validation_form/src/rules/index.dart';
+import 'package:validation_form/validation_form.dart';
 
 class ConfirmedPassword extends Rule {
   final String other;

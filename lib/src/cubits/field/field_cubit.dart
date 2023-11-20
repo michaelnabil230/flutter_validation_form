@@ -58,7 +58,7 @@ class FieldCubit extends Cubit<FieldState> {
     List<String> errors = [];
 
     for (final rule in rules()) {
-      rule.initialization(attribute);
+      rule.attribute = attribute;
 
       if (!rule.isValid(value)) {
         final validationMessage = validationMessages[rule.name];

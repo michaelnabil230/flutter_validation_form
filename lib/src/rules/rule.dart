@@ -8,8 +8,6 @@ abstract class Rule {
 
   ValidationMessage? customValidationMessage;
 
-  void initialization(String attribute) => this.attribute = attribute;
-
   bool isValid(String value);
 
   String get name;

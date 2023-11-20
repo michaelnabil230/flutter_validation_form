@@ -27,3 +27,16 @@ migrate_working_dir/
 **/doc/api/
 .dart_tool/
 build/
+
+# IOS
+ios/
+ios/.generated/
+ios/Flutter/Generated.xcconfig
+ios/Runner/GeneratedPluginRegistrant.*
+
+# Coverage
+/coverage
+
+# Flutter
+/.flutter-plugins
+/.flutter-plugins-dependencies

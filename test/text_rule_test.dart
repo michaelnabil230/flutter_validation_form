@@ -12,7 +12,7 @@ class TestRule extends Rule {
 void main() {
   group('TestRule', () {
     test('should return true if the input is not empty', () {
-      final rule = TestRule()..initialization('field');
+      final rule = TestRule()..attribute = 'field';
 
       expect(rule.isValid('hello'), isTrue);
       expect(rule.isValid('123'), isTrue);
@@ -20,14 +20,14 @@ void main() {
     });
 
     test('should return false if the input is empty', () {
-      final rule = TestRule()..initialization('field');
+      final rule = TestRule()..attribute = 'field';
 
       expect(rule.isValid(''), isFalse);
     });
 
     test('test custom error', () {
       final rule = TestRule()
-        ..initialization('field')
+        ..attribute = 'field'
         ..customValidationMessage =
             (String attribute, [List? _]) => 'This is custom error';
 

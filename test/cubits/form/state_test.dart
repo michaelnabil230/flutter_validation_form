@@ -30,7 +30,7 @@ void main() {
 
       expect(
         formState.toString(),
-        'FormState(status: FormStatus.enable, isEdit: true, errors: {field1: [error1]})',
+        'FormState(status: FormStatus.enable, errors: {field1: [error1]})',
       );
     });
 

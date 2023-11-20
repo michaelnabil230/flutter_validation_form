@@ -2,15 +2,18 @@ import 'package:validation_form/src/rules/rule.dart';
 import 'package:validation_form/src/rules/text/required.dart';
 
 class RequiredWhen extends Rule {
-  final bool boolean;
+  final bool condition;
+
+  final String conditionName;
 
   RequiredWhen({
-    required this.boolean,
+    required this.condition,
+    required this.conditionName,
   });
 
   @override
   bool isValid(String value) {
-    if (boolean) {
+    if (condition) {
       return Required().isValid(value);
     }
 
@@ -21,5 +24,5 @@ class RequiredWhen extends Rule {
   String get name => ValidationNames.requiredWhen;
 
   @override
-  List get parameters => [boolean];
+  List<Object> get parameters => [conditionName];
 }

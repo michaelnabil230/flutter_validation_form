@@ -1,8 +1,6 @@
 import 'package:validation_form/src/rules/rule.dart';
 
 class IsSecureUrl extends Rule {
-  IsSecureUrl();
-
   @override
   bool isValid(String value) {
     String url = value.toLowerCase();

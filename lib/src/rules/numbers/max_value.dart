@@ -16,5 +16,5 @@ class MaxValue extends Rule {
   String get name => ValidationNames.mustBeMax;
 
   @override
-  List get parameters => [max];
+  List<Object> get parameters => [max];
 }

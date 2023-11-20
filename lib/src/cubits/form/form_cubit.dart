@@ -6,12 +6,13 @@ part 'form_state.dart';
 
 abstract class FormCubit extends Cubit<FormState> with _Allies {
   FormCubit({
-    FormStatus status = FormStatus.enable,
+    FormStatus status = FormStatus.disable,
   }) : super(FormState(status: status)) {
     _fields = initializeFields();
 
     _addStreamToFields();
     _addStreamToFieldsDepends();
+    refresh();
   }
 
   List<FieldCubit> _fields = [];
@@ -20,9 +21,9 @@ abstract class FormCubit extends Cubit<FormState> with _Allies {
 
   List<FieldCubit> get fieldsDepends => [];
 
-  List<FieldCubit> initializeFields();
-
   bool get isEdit => false;
+
+  List<FieldCubit> initializeFields();
 
   void setShowErrorOnAllFields() {
     for (final field in fields) {
@@ -48,7 +49,6 @@ abstract class FormCubit extends Cubit<FormState> with _Allies {
     for (final field in fields) {
       field.stream.listen((_) => refresh());
     }
-    refresh();
   }
 
   void _addStreamToFieldsDepends() {

@@ -4,7 +4,7 @@ import 'package:validation_form/src/rules/index.dart';
 void main() {
   group('IsBool', () {
     test('should return true for valid boolean values', () {
-      final rule = IsBool();
+      final rule = IsBoolean();
 
       expect(rule.isValid('true'), isTrue);
       expect(rule.isValid('false'), isTrue);
@@ -19,7 +19,7 @@ void main() {
     });
 
     test('should return false for invalid boolean values', () {
-      final rule = IsBool();
+      final rule = IsBoolean();
 
       expect(rule.isValid(''), isFalse);
       expect(rule.isValid('notabool'), isFalse);

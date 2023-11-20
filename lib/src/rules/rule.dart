@@ -2,11 +2,8 @@ import 'package:validation_form/src/classes/default_validation_messages.dart';
 import 'package:validation_form/src/types/index.dart';
 
 export 'package:validation_form/src/classes/validation_names.dart';
-export 'package:validation_form/src/classes/default_validation_messages.dart';
 
 abstract class Rule {
-  Rule();
-
   late String attribute;
 
   ValidationMessage? customValidationMessage;
@@ -17,7 +14,7 @@ abstract class Rule {
 
   String get name;
 
-  List get parameters => [];
+  List<Object> get parameters => [];
 
   String get error {
     return customValidationMessage == null

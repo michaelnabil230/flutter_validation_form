@@ -1,8 +1,6 @@
 import 'package:validation_form/src/rules/rule.dart';
 
 class IsInstagramUrl extends Rule {
-  IsInstagramUrl();
-
   @override
   bool isValid(String value) {
     return RegExp(

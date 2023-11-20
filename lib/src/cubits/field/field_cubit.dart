@@ -16,13 +16,10 @@ class FieldCubit extends Cubit<FieldState> {
 
   final Map<String, ValidationMessage> validationMessages;
 
-  final List<String> ignoreValues;
-
   FieldCubit({
     required this.attribute,
     this.initialValue = '',
     required this.rules,
-    this.ignoreValues = const [],
     this.validationMessages = const {},
   }) : super(FieldState(
           attribute: attribute,
@@ -64,10 +61,6 @@ class FieldCubit extends Cubit<FieldState> {
     for (final rule in rules()) {
       rule.initialization(attribute);
 
-      if (rule is NotRepeat) {
-        rule.setList(ignoreValues);
-      }
-
       if (!rule.isValid(value)) {
         final validationMessage = validationMessages[rule.name];
 
@@ -84,6 +77,6 @@ class FieldCubit extends Cubit<FieldState> {
 
   @override
   String toString() {
-    return 'FieldCubit(attribute: $attribute, initialValue: $initialValue, rules: $rules, validationMessages: $validationMessages, ignoreValues: $ignoreValues)';
+    return 'FieldCubit(attribute: $attribute, initialValue: $initialValue, rules: $rules, validationMessages: $validationMessages)';
   }
 }

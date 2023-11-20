@@ -16,5 +16,5 @@ class IsDateBefore extends Rule {
   String get name => ValidationNames.mustBeBeforeDate;
 
   @override
-  List get parameters => [date];
+  List<Object> get parameters => [date];
 }

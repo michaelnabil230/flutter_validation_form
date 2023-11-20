@@ -6,7 +6,7 @@ void main() {
     test('should be initialized with default values', () {
       const formState = FormState();
 
-      expect(formState.status, FormStatus.enable);
+      expect(formState.status, FormStatus.disable);
       expect(formState.errors, isEmpty);
     });
 

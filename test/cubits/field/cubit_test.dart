@@ -66,7 +66,7 @@ void main() {
     test('toString should generate a readable representation', () {
       expect(
         fieldCubit.toString(),
-        'FieldCubit(attribute: name, initialValue: , rules: Closure: () => List<Rule>, validationMessages: {}, ignoreValues: [])',
+        'FieldCubit(attribute: name, initialValue: , rules: Closure: () => List<Rule>, validationMessages: {}',
       );
     });
   });

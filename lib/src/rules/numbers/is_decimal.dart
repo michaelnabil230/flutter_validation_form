@@ -1,8 +1,6 @@
 import 'package:validation_form/src/rules/rule.dart';
 
 class IsDecimal extends Rule {
-  IsDecimal();
-
   @override
   bool isValid(String value) => double.tryParse(value) != null;
 

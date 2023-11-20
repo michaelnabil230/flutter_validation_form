@@ -16,5 +16,5 @@ class IsDateAfter extends Rule {
   String get name => ValidationNames.mustBeAfterDate;
 
   @override
-  List get parameters => [date];
+  List<Object> get parameters => [date];
 }

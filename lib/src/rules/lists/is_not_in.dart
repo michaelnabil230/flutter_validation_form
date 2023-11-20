@@ -13,5 +13,5 @@ class IsNotIn extends Rule {
   String get name => ValidationNames.mustNotBeInList;
 
   @override
-  List get parameters => [list];
+  List<Object> get parameters => [list];
 }

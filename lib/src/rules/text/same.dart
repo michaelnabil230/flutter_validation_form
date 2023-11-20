@@ -12,5 +12,5 @@ class Same extends Rule {
   String get name => ValidationNames.same;
 
   @override
-  List get parameters => [same];
+  List<Object> get parameters => [same];
 }

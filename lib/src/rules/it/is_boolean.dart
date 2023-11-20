@@ -1,8 +1,6 @@
 import 'package:validation_form/src/rules/rule.dart';
 
-class IsBool extends Rule {
-  IsBool();
-
+class IsBoolean extends Rule {
   @override
   bool isValid(String value) {
     return ['true', 'false', '0', '1']

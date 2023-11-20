@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:validation_form/src/rules/phone/is_egy_phone.dart';
+import 'package:validation_form/src/rules/phone/is_egyptian_phone.dart';
 
 void main() {
   group('IsEgyptianPhone', () {

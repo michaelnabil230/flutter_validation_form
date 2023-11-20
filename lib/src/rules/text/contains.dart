@@ -12,5 +12,5 @@ class Contains extends Rule {
   String get name => ValidationNames.isItContains;
 
   @override
-  List get parameters => [other];
+  List<Object> get parameters => [other];
 }

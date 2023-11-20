@@ -1,8 +1,6 @@
 import 'package:validation_form/src/rules/rule.dart';
 
 class IsUrl extends Rule {
-  IsUrl();
-
   @override
   bool isValid(String value) {
     return RegExp(

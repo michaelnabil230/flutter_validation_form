@@ -1,8 +1,6 @@
 import 'package:validation_form/src/rules/rule.dart';
 
 class IsPort extends Rule {
-  IsPort();
-
   @override
   bool isValid(String value) {
     num? port = num.tryParse(value);

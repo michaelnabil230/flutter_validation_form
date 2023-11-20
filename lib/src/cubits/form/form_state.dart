@@ -6,7 +6,7 @@ class FormState extends Equatable {
   final Map<String, List<String>> errors;
 
   const FormState({
-    this.status = FormStatus.enable,
+    this.status = FormStatus.disable,
     this.errors = const {},
   });
 

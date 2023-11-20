@@ -21,5 +21,5 @@ class RangeLength extends Rule {
   String get name => ValidationNames.mustBeRange;
 
   @override
-  List get parameters => [min, max];
+  List<Object> get parameters => [min, max];
 }

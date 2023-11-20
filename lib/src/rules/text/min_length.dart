@@ -12,5 +12,5 @@ class MinLength extends Rule {
   String get name => ValidationNames.min;
 
   @override
-  List get parameters => [min];
+  List<Object> get parameters => [min];
 }

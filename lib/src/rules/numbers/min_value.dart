@@ -16,5 +16,5 @@ class MinValue extends Rule {
   String get name => ValidationNames.mustBeMin;
 
   @override
-  List get parameters => [min];
+  List<Object> get parameters => [min];
 }

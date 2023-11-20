@@ -24,7 +24,7 @@ class Password extends Rule {
 
   late String _message;
 
-  late List _parameters = [];
+  late List<Object> _parameters = [];
 
   @override
   bool isValid(String value) {
@@ -62,5 +62,5 @@ class Password extends Rule {
   String get name => _message;
 
   @override
-  List get parameters => _parameters;
+  List<Object> get parameters => _parameters;
 }

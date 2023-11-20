@@ -13,5 +13,5 @@ class NotContainsAny extends Rule {
   String get name => ValidationNames.mustNotContainsAny;
 
   @override
-  List get parameters => [list];
+  List<Object> get parameters => [list];
 }

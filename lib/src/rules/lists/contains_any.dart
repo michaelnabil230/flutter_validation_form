@@ -18,7 +18,7 @@ class ContainsAny extends Rule {
   String get name => ValidationNames.mustContainsAny;
 
   @override
-  List get parameters => [list];
+  List<Object> get parameters => [list];
 }
 
 bool containsAny(

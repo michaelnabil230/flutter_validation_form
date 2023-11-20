@@ -12,5 +12,5 @@ class StartsWith extends Rule {
   String get name => ValidationNames.startsWith;
 
   @override
-  List get parameters => [pattern];
+  List<Object> get parameters => [pattern];
 }

@@ -12,5 +12,5 @@ class MaxLength extends Rule {
   String get name => ValidationNames.max;
 
   @override
-  List get parameters => [max];
+  List<Object> get parameters => [max];
 }

@@ -19,9 +19,8 @@ class LoginForm extends FormCubit {
       },
       initialValue: 'michael@example.com',
       rules: () => [
-        Required(),
-        NotRepeat(),
-        IsEmail(),
+        Validations.required,
+        Validations.isEmail,
       ],
     );
 

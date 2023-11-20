@@ -21,11 +21,9 @@ export 'lists/contains_any.dart';
 export 'lists/is_in.dart';
 export 'lists/is_not_in.dart';
 export 'lists/not_contains_any.dart';
-export 'lists/not_repeat_value.dart';
 
 // Magic
 export 'magic/required_when.dart';
-export 'magic/sometimes.dart';
 
 // Password
 export 'password/password.dart';
@@ -38,8 +36,8 @@ export 'numbers/max_value.dart';
 export 'numbers/min_value.dart';
 
 // Phone
-export 'phone/is_egy_phone.dart';
-export 'phone/is_ksa_phone.dart';
+export 'phone/is_egyptian_phone.dart';
+export 'phone/is_saudi_phone.dart';
 
 // Text
 export 'text/contains.dart';

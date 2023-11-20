@@ -10,7 +10,7 @@ void main() {
         uppercase: true,
         numbers: true,
         specialCharacters: true,
-      )..initialization('password');
+      );
 
       expect(rule.isValid('Password1!'), isTrue);
       expect(rule.isValid('Secure123#'), isTrue);
@@ -23,7 +23,7 @@ void main() {
         uppercase: true,
         numbers: true,
         specialCharacters: true,
-      )..initialization('password');
+      );
 
       // missing uppercase and special character
       expect(rule.isValid('password'), isFalse);
@@ -36,7 +36,7 @@ void main() {
     });
 
     test('should return false for an empty password', () {
-      final rule = Password()..initialization('password');
+      final rule = Password();
 
       expect(rule.isValid(''), isFalse);
     });

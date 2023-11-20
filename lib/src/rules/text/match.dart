@@ -18,7 +18,7 @@ class Match extends Rule {
   String get name => ValidationNames.shouldMatch;
 
   @override
-  List get parameters => [other];
+  List<Object> get parameters => [other];
 }
 
 bool _match(

@@ -1,8 +1,6 @@
 import 'package:validation_form/src/rules/rule.dart';
 
 class IsIpAddress extends Rule {
-  IsIpAddress();
-
   @override
   bool isValid(String value) {
     final ipParts = value.split('.');

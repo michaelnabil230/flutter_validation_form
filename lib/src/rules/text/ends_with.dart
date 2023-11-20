@@ -12,5 +12,5 @@ class EndsWith extends Rule {
   String get name => ValidationNames.mustEndWith;
 
   @override
-  List get parameters => [end];
+  List<Object> get parameters => [end];
 }

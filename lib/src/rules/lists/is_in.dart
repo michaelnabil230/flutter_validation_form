@@ -12,7 +12,7 @@ class IsIn extends Rule {
   String get name => ValidationNames.mustBeInList;
 
   @override
-  List get parameters => [list];
+  List<Object> get parameters => [list];
 }
 
 bool isIn(String v, List<String> list) => list.any((e) => e.compareTo(v) == 0);

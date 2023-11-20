@@ -1,6 +1,6 @@
 # Form Validation Library
 
-[![Build Status](https://github.com/michaelnabil230/flutter_validation_form/actions/workflows/main.yml/badge.svg)](https://github.com/michaelnabil230/flutter_validation_form/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/michaelnabil230/flutter_validation_form/branch/master/graph/badge.svg)](https://codecov.io/gh/michaelnabil230/flutter_validation_form) [![pub package](https://img.shields.io/pub/v/validation_form.svg)](https://pub.dartlang.org/packages/validation_form)
+[![Build Status](https://github.com/michaelnabil230/flutter_validation_form/actions/workflows/main.yaml/badge.svg)](https://github.com/michaelnabil230/flutter_validation_form/actions/workflows/main.yaml) [![codecov](https://codecov.io/gh/michaelnabil230/flutter_validation_form/branch/master/graph/badge.svg)](https://codecov.io/gh/michaelnabil230/flutter_validation_form) [![pub package](https://img.shields.io/pub/v/validation_form.svg)](https://pub.dartlang.org/packages/validation_form)
 
 Simplify form management in Flutter using the Cubit architecture.
 

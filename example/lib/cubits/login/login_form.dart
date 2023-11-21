@@ -1,10 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:validation_form/validation_form.dart';
 
-class IsAdminNotifier extends ValueNotifier<bool> {
-  IsAdminNotifier() : super(false);
-}
-
 class LoginForm extends FormCubit {
   LoginForm() : super(status: FormStatus.enable);
 
@@ -16,20 +12,28 @@ class LoginForm extends FormCubit {
 
   late FieldCubit passwordConfirm;
 
-  bool _isAdmin = true;
+  late ValueNotifier<bool> _isAdminNotifier;
 
-  void onChangedIsAdmin(IsAdminNotifier isAdminNotifier) {
-    _isAdmin = !_isAdmin;
-    isAdminNotifier.value = !isAdminNotifier.value;
-    name.reset();
+  ValueNotifier<bool> get isAdminNotifier => _isAdminNotifier;
+
+  bool get isAdmin => _isAdminNotifier.value;
+
+  @override
+  void initialize([dynamic data]) {
+    _isAdminNotifier = ValueNotifier(true);
+
+    super.initialize(data);
   }
 
   @override
-  List<FieldCubit> initializeFields() {
+  List<FieldCubit> initializeFields(data) {
+    data as UserDate;
+
     name = FieldCubit(
       attribute: 'name',
-      rules: () =>
-          [Validations.required]..when(_isAdmin, [Validations.minLength(10)]),
+      rules: () => [
+        Validations.required,
+      ]..when(isAdmin, [Validations.minLength(10)]),
     );
 
     email = FieldCubit(
@@ -38,7 +42,7 @@ class LoginForm extends FormCubit {
         ValidationNames.required: (attribute, [_ = const []]) =>
             'The email is required field'
       },
-      initialValue: 'michael@example.com',
+      initialValue: data.email,
       rules: () => [
         Validations.required,
         Validations.isEmail,
@@ -65,6 +69,26 @@ class LoginForm extends FormCubit {
     return [name, email, password, passwordConfirm];
   }
 
+  void onChangedIsAdmin() {
+    _isAdminNotifier.value = !isAdmin;
+    name
+      ..reset()
+      ..errorsCheck();
+  }
+
   @override
-  List<FieldCubit> get fieldsDepends => [password, passwordConfirm];
+  Future<void> close() {
+    _isAdminNotifier.dispose();
+    return super.close();
+  }
+}
+
+class UserDate {
+  late String? name;
+  late String email;
+
+  UserDate({
+    this.name,
+    required this.email,
+  });
 }

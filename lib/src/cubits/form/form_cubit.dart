@@ -7,23 +7,20 @@ part 'form_state.dart';
 abstract class FormCubit extends Cubit<FormState> with _Allies {
   FormCubit({
     FormStatus status = FormStatus.disable,
-  }) : super(FormState(status: status)) {
-    _fields = initializeFields();
-
-    _addStreamToFields();
-    _addStreamToFieldsDepends();
-    refresh();
-  }
+  }) : super(FormState(status: status));
 
   List<FieldCubit> _fields = [];
 
   List<FieldCubit> get fields => _fields;
 
-  List<FieldCubit> get fieldsDepends => [];
+  void initialize([dynamic data]) {
+    _fields = initializeFields(data);
+    _addStreamToFields();
+    setShowErrorOnAllFields();
+    refresh();
+  }
 
-  bool get isEdit => false;
-
-  List<FieldCubit> initializeFields();
+  List<FieldCubit> initializeFields(dynamic data);
 
   void setShowErrorOnAllFields() {
     for (final field in fields) {
@@ -31,9 +28,9 @@ abstract class FormCubit extends Cubit<FormState> with _Allies {
     }
   }
 
-  void reset() {
+  void reset([bool withShowError = false]) {
     for (final field in fields) {
-      field.reset();
+      field.reset(withShowError);
     }
   }
 
@@ -47,46 +44,23 @@ abstract class FormCubit extends Cubit<FormState> with _Allies {
 
   void _addStreamToFields() {
     for (final field in fields) {
-      field.stream.listen((_) => refresh());
-    }
-  }
-
-  void _addStreamToFieldsDepends() {
-    for (final field in fieldsDepends) {
       field.stream.listen((_) {
-        for (final field1 in fieldsDepends) {
-          field1.errorsCheck();
-        }
+        setShowErrorOnAllFields();
+        refresh();
       });
     }
   }
 
   void refresh() {
-    bool passes = _isPasses();
+    Map<String, List<String>> errors = {
+      for (final field in fields) field.state.attribute: field.state.errors
+    };
 
-    Map<String, List<String>> errors = {};
-
-    for (final field in fields) {
-      errors.addAll({field.state.attribute: field.state.errors});
-    }
+    bool passes = errors.values.expand((error) => error).toList().isEmpty;
 
     FormStatus status = passes ? FormStatus.enable : FormStatus.disable;
 
     emit(state.copyWith(status: status, errors: errors));
-  }
-
-  bool _isPasses() {
-    if (isEdit) {
-      bool noInvalid = !fields.any((field) => field.state.isInvalid);
-      bool anyValid = fields.any((field) => field.state.isValid);
-      bool anyInitial = fields.any((field) => field.state.isInitial);
-
-      bool noEveryInitial = !fields.every((field) => field.state.isInitial);
-
-      return noInvalid && (anyValid && anyInitial || noEveryInitial);
-    }
-
-    return fields.every((field) => field.state.isValid);
   }
 }
 

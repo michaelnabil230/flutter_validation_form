@@ -7,23 +7,36 @@ class FieldState extends Equatable {
 
   final String attribute;
 
-  final bool isReset;
-
   final List<String> errors;
 
   final FieldStatus status;
+
+  final bool showError;
 
   FieldState({
     required this.initialValue,
     required this.value,
     required this.attribute,
-    this.isReset = false,
     this.errors = const [],
+    this.showError = false,
     FieldStatus? status,
   }) : status = status ??
             (value.isNotEmpty ? FieldStatus.valid : FieldStatus.initial);
 
-  String? get error => errors.isNotEmpty ? errors.first : null;
+  factory FieldState.initialize(String attribute, String initialValue) =>
+      FieldState(
+        attribute: attribute,
+        initialValue: initialValue,
+        value: initialValue,
+      );
+
+  String? get error {
+    if (showError) {
+      return errors.isNotEmpty ? errors.first : null;
+    }
+
+    return null;
+  }
 
   bool get isInitial => status.isInitial;
 
@@ -33,9 +46,10 @@ class FieldState extends Equatable {
 
   FieldState copyWith({
     String? value,
+    String? initialValue,
     List<String>? errors,
+    bool? showError,
     FieldStatus? status,
-    bool? isReset,
   }) {
     List<String> finalErrors = errors ?? this.errors;
     FieldStatus finalStatus = status ??
@@ -43,19 +57,19 @@ class FieldState extends Equatable {
 
     return FieldState(
       attribute: attribute,
-      initialValue: initialValue,
+      initialValue: initialValue ?? this.initialValue,
       value: value ?? this.value,
-      isReset: isReset ?? this.isReset,
       errors: finalErrors,
+      showError: showError ?? this.showError,
       status: finalStatus,
     );
   }
 
   @override
   String toString() {
-    return 'FieldState(attribute: $attribute, initialValue: $initialValue, value: $value, errors: $errors, status: $status)';
+    return 'FieldState(attribute: $attribute, initialValue: $initialValue, value: $value, showError: $showError, errors: $errors, status: $status)';
   }
 
   @override
-  List<Object?> get props => [attribute, initialValue, isReset, value, errors];
+  List<Object?> get props => [attribute, initialValue, value, errors];
 }

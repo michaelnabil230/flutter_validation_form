@@ -9,15 +9,12 @@ class TestFormCubit extends FormCubit {
   late FieldCubit field2;
 
   @override
-  List<FieldCubit> initializeFields() {
+  List<FieldCubit> initializeFields(_) {
     field1 = FieldCubit(attribute: 'field1', rules: () => [Required()]);
     field2 = FieldCubit(attribute: 'field2', rules: () => [Required()]);
 
     return [field1, field2];
   }
-
-  @override
-  List<FieldCubit> get fieldsDepends => [field1, field2];
 }
 
 class TestForm2Cubit extends FormCubit {
@@ -28,31 +25,21 @@ class TestForm2Cubit extends FormCubit {
   late FieldCubit field2;
 
   @override
-  List<FieldCubit> initializeFields() {
+  List<FieldCubit> initializeFields(_) {
     field1 = FieldCubit(attribute: 'field1', rules: () => [Required()]);
     field2 = FieldCubit(attribute: 'field2', rules: () => [Required()]);
 
     return [field1, field2];
   }
-
-  @override
-  bool get isEdit => true;
 }
 
 void main() {
   group('FormCubit', () {
     test('should be initialized with default values', () {
-      final formCubit = TestFormCubit();
+      final formCubit = TestFormCubit()..initialize();
 
       expect(formCubit.state.status, FormStatus.disable);
-      expect(formCubit.isEdit, isFalse);
       expect(formCubit.fields.length, 2);
-    });
-
-    test('should be is edit', () {
-      final formCubit = TestForm2Cubit();
-
-      expect(formCubit.isEdit, isTrue);
     });
 
     test('tests for status', () {

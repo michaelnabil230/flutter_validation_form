@@ -46,7 +46,6 @@ void main() {
 
       expect(fieldCubit.state.value, isEmpty);
       expect(fieldCubit.state.status, FieldStatus.initial);
-      expect(fieldCubit.state.isReset, isTrue);
       expect(fieldCubit.state.errors, isEmpty);
     });
 

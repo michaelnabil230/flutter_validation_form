@@ -32,15 +32,21 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  LoginForm get _loginFormCubit => context.read<LoginForm>();
+  late LoginForm _loginFormCubit;
 
-  final IsAdminNotifier isAdmin = IsAdminNotifier();
+  @override
+  void initState() {
+    _loginFormCubit = context.read<LoginForm>();
+    _loginFormCubit.initialize(UserDate(email: 'michael@example.com'));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -106,12 +112,11 @@ class _LoginPageState extends State<LoginPage> {
                   const Text('Is admin'),
                   const SizedBox(width: 10),
                   ValueListenableBuilder<bool>(
-                    valueListenable: isAdmin,
-                    builder: (BuildContext context, bool value, child) {
+                    valueListenable: _loginFormCubit.isAdminNotifier,
+                    builder: (BuildContext context, bool value, _) {
                       return Checkbox(
-                        value: isAdmin.value,
-                        onChanged: (_) =>
-                            _loginFormCubit.onChangedIsAdmin(isAdmin),
+                        value: value,
+                        onChanged: (_) => _loginFormCubit.onChangedIsAdmin(),
                       );
                     },
                   ),

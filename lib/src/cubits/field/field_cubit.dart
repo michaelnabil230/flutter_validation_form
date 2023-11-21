@@ -20,20 +20,20 @@ class FieldCubit extends Cubit<FieldState> {
     this.initialValue = '',
     required this.rules,
     this.validationMessages = const {},
-  }) : super(FieldState(
-          attribute: attribute,
-          initialValue: initialValue,
-          value: initialValue,
-        ));
+  }) : super(FieldState.initialize(attribute, initialValue));
 
   void setValue(String value) {
-    if (state.isReset) {
-      return emit(state.copyWith(isReset: false));
-    }
-
     return emit(state.copyWith(
       value: value,
       errors: runValidation(value),
+      showError: true,
+    ));
+  }
+
+  void setInitialValue(String value) {
+    return emit(state.copyWith(
+      initialValue: value,
+      showError: false,
     ));
   }
 
@@ -41,12 +41,12 @@ class FieldCubit extends Cubit<FieldState> {
     addErrors(runValidation(state.value));
   }
 
-  void reset() {
+  void reset([bool withShowError = false]) {
     emit(state.copyWith(
       value: initialValue,
       status: FieldStatus.initial,
-      isReset: true,
       errors: [],
+      showError: withShowError,
     ));
   }
 

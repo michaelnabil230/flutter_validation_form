@@ -13,7 +13,6 @@ void main() {
       expect(fieldState.attribute, 'name');
       expect(fieldState.value, 'John');
       expect(fieldState.initialValue, 'John');
-      expect(fieldState.isReset, false);
       expect(fieldState.errors, isEmpty);
       expect(fieldState.status, FieldStatus.valid);
     });
@@ -55,6 +54,7 @@ void main() {
         value: 'John',
         initialValue: 'John',
         errors: const ['Error 1', 'Error 2'],
+        showError: true,
       );
 
       expect(fieldState.error, 'Error 1');
@@ -98,10 +98,9 @@ void main() {
         initialValue: 'John',
       );
 
-      final copied = original.copyWith(value: 'Jane', isReset: true);
+      final copied = original.copyWith(value: 'Jane');
 
       expect(copied.value, 'Jane');
-      expect(copied.isReset, true);
     });
 
     test('toString should generate a readable representation', () {
@@ -113,7 +112,7 @@ void main() {
 
       expect(
         fieldState.toString(),
-        'FieldState(attribute: name, initialValue: John, value: John, errors: [], status: FieldStatus.valid)',
+        'FieldState(attribute: name, initialValue: John, value: John, showError: false, errors: [], status: FieldStatus.valid)',
       );
     });
 
@@ -129,7 +128,6 @@ void main() {
         [
           fieldState.attribute,
           fieldState.initialValue,
-          fieldState.isReset,
           fieldState.value,
           fieldState.errors
         ],

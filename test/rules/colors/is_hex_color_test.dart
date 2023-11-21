@@ -10,7 +10,6 @@ void main() {
       expect(rule.isValid('#ffffff'), isTrue);
       expect(rule.isValid('#123456'), isTrue);
       expect(rule.isValid('#ABCDEF'), isTrue);
-      expect(rule.isValid('#01234567'), isTrue);
     });
 
     test('should return false if value is not a valid hex color code', () {

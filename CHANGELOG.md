@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Fixes issues and clean code
+
 ## 0.0.3
 
 - Fixes issues and clean code

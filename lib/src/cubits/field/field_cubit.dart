@@ -39,8 +39,11 @@ class FieldCubit extends Cubit<FieldState> {
     ));
   }
 
-  void errorsCheck() {
-    addErrors(runValidation(state.value));
+  void errorsCheck([bool? withShowError = false]) {
+    emit(state.copyWith(
+      errors: runValidation(state.value),
+      showError: withShowError,
+    ));
   }
 
   void reset([bool withShowError = false]) {
@@ -51,8 +54,11 @@ class FieldCubit extends Cubit<FieldState> {
     ));
   }
 
-  void addErrors(List<String> errors) {
-    emit(state.copyWith(errors: errors));
+  void addErrors(List<String> errors, [bool? withShowError = true]) {
+    emit(state.copyWith(
+      errors: errors,
+      showError: withShowError,
+    ));
   }
 
   List<String> runValidation(String value) {

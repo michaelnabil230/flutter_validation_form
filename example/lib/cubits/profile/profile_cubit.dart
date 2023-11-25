@@ -19,6 +19,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     await Future.delayed(const Duration(seconds: 2));
     log(form.name.state.value);
     log(form.email.state.value);
+    form.enable();
     log('===End===');
   }
 }

@@ -65,7 +65,7 @@ class LoginForm extends FormCubit {
         Validations.required,
         Validations.password(min: 4),
       ],
-    );
+    )..stream.listen((_) => password.errorsCheck());
 
     return [name, email, password, passwordConfirm];
   }

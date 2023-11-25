@@ -52,10 +52,7 @@ abstract class FormCubit extends Cubit<FormState> with _FormAllies {
 
   void _addStreamToFields() {
     for (final field in fields) {
-      field.stream.listen((_) {
-        setShowErrorOnAllFields();
-        refresh();
-      });
+      field.stream.listen((_) => refresh());
     }
   }
 

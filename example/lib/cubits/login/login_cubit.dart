@@ -24,7 +24,6 @@ class LoginCubit extends Cubit<LoginState> {
 
     if (Random().nextBool()) {
       form.email.addErrors(['Massage error form backend']);
-      form.refresh();
       log('From has errors form backend');
     } else {
       form.reset();

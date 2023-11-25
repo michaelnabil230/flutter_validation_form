@@ -64,16 +64,18 @@ abstract class FormCubit extends Cubit<FormState> with _FormAllies {
       for (final field in fields) field.state.attribute: field.state.errors
     };
 
-    bool passes = isEdit
-        ? _isPassesEdit()
-        : errors.values.expand((error) => error).toList().isEmpty;
+    bool passes = _isPasses(errors);
 
     FormStatus status = passes ? FormStatus.enable : FormStatus.disable;
 
     emit(state.copyWith(status: status, errors: errors));
   }
 
-  bool _isPassesEdit() {
+  bool _isPasses(Map<String, List<String>> errors) {
+    if (isEdit) {
+      return errors.values.expand((error) => error).toList().isEmpty;
+    }
+
     bool noInvalid = !fields.any((field) => field.state.isInvalid);
     bool anyValid = fields.any((field) => field.state.isValid);
     bool anyInitial = fields.any((field) => field.state.isInitial);

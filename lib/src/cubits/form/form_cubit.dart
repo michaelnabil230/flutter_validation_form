@@ -72,7 +72,7 @@ abstract class FormCubit extends Cubit<FormState> with _FormAllies {
   }
 
   bool _isPasses(Map<String, List<String>> errors) {
-    if (isEdit) {
+    if (!isEdit) {
       return errors.values.expand((error) => error).toList().isEmpty;
     }
 

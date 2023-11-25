@@ -2,8 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:validation_form/validation_form.dart';
 
 class LoginForm extends FormCubit {
-  LoginForm() : super(status: FormStatus.enable);
-
   late FieldCubit name;
 
   late FieldCubit email;
@@ -19,10 +17,9 @@ class LoginForm extends FormCubit {
   bool get isAdmin => _isAdminNotifier.value;
 
   @override
-  void initialize([dynamic data]) {
+  void initialize([BuildContext? context, dynamic data]) {
     _isAdminNotifier = ValueNotifier(true);
-
-    super.initialize(data);
+    super.initialize(context, data);
   }
 
   @override
@@ -30,6 +27,7 @@ class LoginForm extends FormCubit {
     data as UserDate;
 
     name = FieldCubit(
+      context: context,
       attribute: 'name',
       rules: () => [
         Validations.required,
@@ -37,6 +35,7 @@ class LoginForm extends FormCubit {
     );
 
     email = FieldCubit(
+      context: context,
       attribute: 'email',
       validationMessages: {
         ValidationNames.required: (attribute, [_ = const []]) =>
@@ -50,6 +49,7 @@ class LoginForm extends FormCubit {
     );
 
     password = FieldCubit(
+      context: context,
       attribute: 'password',
       rules: () => [
         Validations.required,
@@ -59,6 +59,7 @@ class LoginForm extends FormCubit {
     );
 
     passwordConfirm = FieldCubit(
+      context: context,
       attribute: 'password_confirm',
       rules: () => [
         Validations.required,
@@ -78,7 +79,9 @@ class LoginForm extends FormCubit {
 
   @override
   Future<void> close() {
-    _isAdminNotifier.dispose();
+    if (initialized) {
+      _isAdminNotifier.dispose();
+    }
     return super.close();
   }
 }

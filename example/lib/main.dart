@@ -13,12 +13,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => LoginForm()),
-          BlocProvider(create: (context) => LoginCubit(form: context.read())),
-        ],
-        child: const LoginPage(),
+      home: ValidationMessages(
+        messages: {
+          ValidationNames.required: (attribute, [_ = const []]) {
+            return 'The $attribute field is must be required';
+          }
+        },
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => LoginForm()),
+            BlocProvider(create: (context) => LoginCubit(form: context.read())),
+          ],
+          child: const LoginPage(),
+        ),
       ),
     );
   }
@@ -37,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     _loginFormCubit = context.read<LoginForm>();
-    _loginFormCubit.initialize(UserDate(email: 'michael@example.com'));
+    _loginFormCubit.initialize(context, UserDate(email: 'michael@example.com'));
     super.initState();
   }
 

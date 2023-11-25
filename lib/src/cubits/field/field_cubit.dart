@@ -1,12 +1,13 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:validation_form/validation_form.dart';
-import 'package:validation_form/src/types/index.dart';
 
 part 'field_state.dart';
 
 class FieldCubit extends Cubit<FieldState> {
+  final BuildContext? context;
+
   final String attribute;
 
   final String initialValue;
@@ -16,6 +17,7 @@ class FieldCubit extends Cubit<FieldState> {
   final Map<String, ValidationMessage> validationMessages;
 
   FieldCubit({
+    required this.context,
     required this.attribute,
     this.initialValue = '',
     required this.rules,
@@ -61,10 +63,14 @@ class FieldCubit extends Cubit<FieldState> {
       rule.attribute = attribute;
 
       if (!rule.isValid(value)) {
-        final validationMessage = validationMessages[rule.name];
+        ValidationMessage? message = validationMessages[rule.name];
 
-        if (validationMessage != null) {
-          rule.customValidationMessage = validationMessage;
+        if (message == null && context != null) {
+          message = ValidationMessages.of(context!).widget.messages[rule.name];
+        }
+
+        if (message != null) {
+          rule.customValidationMessage = message;
         }
 
         errors.add(rule.error);

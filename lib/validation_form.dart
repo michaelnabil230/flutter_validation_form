@@ -12,4 +12,6 @@ export './src/classes/index.dart';
 
 export './src/extensions/list.dart';
 
+export './src/types/index.dart';
+
 export 'package:flutter_bloc/flutter_bloc.dart';

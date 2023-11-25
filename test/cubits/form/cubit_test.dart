@@ -2,32 +2,44 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:validation_form/validation_form.dart';
 
 class TestFormCubit extends FormCubit {
-  TestFormCubit({super.status});
-
   late FieldCubit field1;
 
   late FieldCubit field2;
 
   @override
   List<FieldCubit> initializeFields(_) {
-    field1 = FieldCubit(attribute: 'field1', rules: () => [Required()]);
-    field2 = FieldCubit(attribute: 'field2', rules: () => [Required()]);
+    field1 = FieldCubit(
+      context: null,
+      attribute: 'field1',
+      rules: () => [Validations.required],
+    );
+    field2 = FieldCubit(
+      context: null,
+      attribute: 'field2',
+      rules: () => [Validations.required],
+    );
 
     return [field1, field2];
   }
 }
 
 class TestForm2Cubit extends FormCubit {
-  TestForm2Cubit({super.status});
-
   late FieldCubit field1;
 
   late FieldCubit field2;
 
   @override
   List<FieldCubit> initializeFields(_) {
-    field1 = FieldCubit(attribute: 'field1', rules: () => [Required()]);
-    field2 = FieldCubit(attribute: 'field2', rules: () => [Required()]);
+    field1 = FieldCubit(
+      context: null,
+      attribute: 'field1',
+      rules: () => [Validations.required],
+    );
+    field2 = FieldCubit(
+      context: null,
+      attribute: 'field2',
+      rules: () => [Validations.required],
+    );
 
     return [field1, field2];
   }

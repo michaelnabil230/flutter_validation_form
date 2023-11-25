@@ -1,23 +1,31 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 import 'package:validation_form/validation_form.dart';
 
 part 'form_state.dart';
 
 abstract class FormCubit extends Cubit<FormState> with _Allies {
-  FormCubit({
-    FormStatus status = FormStatus.disable,
-  }) : super(FormState(status: status));
+  FormCubit() : super(const FormState());
 
   List<FieldCubit> _fields = [];
 
   List<FieldCubit> get fields => _fields;
 
-  void initialize([dynamic data]) {
+  BuildContext? context;
+
+  bool _initialized = false;
+
+  bool get initialized => _initialized;
+
+  void initialize([BuildContext? context, dynamic data]) {
+    this.context = context;
+
     _fields = initializeFields(data);
     _addStreamToFields();
     setShowErrorOnAllFields();
     refresh();
+    _initialized = true;
   }
 
   List<FieldCubit> initializeFields(dynamic data);

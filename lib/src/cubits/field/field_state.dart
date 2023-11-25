@@ -9,19 +9,27 @@ class FieldState extends Equatable {
 
   final List<String> errors;
 
-  final FieldStatus status;
-
   final bool showError;
 
-  FieldState({
+  const FieldState({
     required this.initialValue,
     required this.value,
     required this.attribute,
     this.errors = const [],
     this.showError = false,
-    FieldStatus? status,
-  }) : status = status ??
-            (value.isNotEmpty ? FieldStatus.valid : FieldStatus.initial);
+  });
+
+  FieldStatus get status {
+    if (initialValue == value) {
+      return FieldStatus.initial;
+    }
+
+    if (errors.isNotEmpty) {
+      return FieldStatus.invalid;
+    }
+
+    return FieldStatus.valid;
+  }
 
   factory FieldState.initialize(String attribute, String initialValue) =>
       FieldState(
@@ -49,19 +57,13 @@ class FieldState extends Equatable {
     String? initialValue,
     List<String>? errors,
     bool? showError,
-    FieldStatus? status,
   }) {
-    List<String> finalErrors = errors ?? this.errors;
-    FieldStatus finalStatus = status ??
-        (finalErrors.isEmpty ? FieldStatus.valid : FieldStatus.invalid);
-
     return FieldState(
       attribute: attribute,
       initialValue: initialValue ?? this.initialValue,
       value: value ?? this.value,
-      errors: finalErrors,
+      errors: errors ?? this.errors,
       showError: showError ?? this.showError,
-      status: finalStatus,
     );
   }
 

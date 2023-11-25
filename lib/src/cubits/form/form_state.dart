@@ -10,10 +10,7 @@ class FormState extends Equatable {
     this.errors = const {},
   });
 
-  FormState copyWith({
-    FormStatus? status,
-    Map<String, List<String>>? errors,
-  }) {
+  FormState copyWith({FormStatus? status, Map<String, List<String>>? errors}) {
     return FormState(
       status: status ?? this.status,
       errors: errors ?? this.errors,

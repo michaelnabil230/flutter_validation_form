@@ -29,6 +29,9 @@ class TestForm2Cubit extends FormCubit {
   late FieldCubit field2;
 
   @override
+  bool get isEdit => true;
+
+  @override
   List<FieldCubit> initializeFields(_) {
     field1 = FieldCubit(
       context: null,
@@ -51,7 +54,14 @@ void main() {
       final formCubit = TestFormCubit()..initialize();
 
       expect(formCubit.state.status, FormStatus.disable);
+      expect(formCubit.isEdit, isFalse);
       expect(formCubit.fields.length, 2);
+    });
+
+    test('should be is edit', () {
+      final formCubit = TestForm2Cubit();
+
+      expect(formCubit.isEdit, isTrue);
     });
 
     test('tests for status', () {

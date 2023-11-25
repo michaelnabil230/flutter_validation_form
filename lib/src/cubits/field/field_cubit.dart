@@ -46,7 +46,6 @@ class FieldCubit extends Cubit<FieldState> {
   void reset([bool withShowError = false]) {
     emit(state.copyWith(
       value: initialValue,
-      status: FieldStatus.initial,
       errors: [],
       showError: withShowError,
     ));

@@ -4,7 +4,7 @@ import 'package:validation_form/validation_form.dart';
 void main() {
   group('FieldState', () {
     test('should be initialized with default values', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
@@ -14,32 +14,32 @@ void main() {
       expect(fieldState.value, 'John');
       expect(fieldState.initialValue, 'John');
       expect(fieldState.errors, isEmpty);
-      expect(fieldState.status, FieldStatus.valid);
+      expect(fieldState.status, FieldStatus.initial);
     });
 
     test('should set status to invalid if errors are present', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
-        errors: const ['Invalid value'],
+        errors: ['Invalid value'],
       );
 
-      expect(fieldState.status, FieldStatus.valid);
+      expect(fieldState.status, FieldStatus.initial);
     });
 
     test('should set status to valid if value is not empty and no errors', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
       );
 
-      expect(fieldState.status, FieldStatus.valid);
+      expect(fieldState.status, FieldStatus.initial);
     });
 
     test('should set status to initial if value is empty', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: '',
         initialValue: '',
@@ -49,11 +49,11 @@ void main() {
     });
 
     test('error should be the first error in the list', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
-        errors: const ['Error 1', 'Error 2'],
+        errors: ['Error 1', 'Error 2'],
         showError: true,
       );
 
@@ -61,38 +61,38 @@ void main() {
     });
 
     test('should indicate if the state is initial', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
       );
 
-      expect(fieldState.isInitial, false);
+      expect(fieldState.isInitial, isTrue);
     });
 
     test('should indicate if the state is valid', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
       );
 
-      expect(fieldState.isValid, true);
+      expect(fieldState.isValid, isFalse);
     });
 
     test('should indicate if the state is invalid', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
-        errors: const ['Invalid value'],
+        errors: ['Invalid value'],
       );
 
-      expect(fieldState.isInvalid, false);
+      expect(fieldState.isInvalid, isFalse);
     });
 
     test('copyWith should create a new instance with updated values', () {
-      final original = FieldState(
+      const original = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
@@ -104,7 +104,7 @@ void main() {
     });
 
     test('toString should generate a readable representation', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',
@@ -112,12 +112,12 @@ void main() {
 
       expect(
         fieldState.toString(),
-        'FieldState(attribute: name, initialValue: John, value: John, showError: false, errors: [], status: FieldStatus.valid)',
+        'FieldState(attribute: name, initialValue: John, value: John, showError: false, errors: [], status: FieldStatus.initial)',
       );
     });
 
     test('props should contain all the relevant properties', () {
-      final fieldState = FieldState(
+      const fieldState = FieldState(
         attribute: 'name',
         value: 'John',
         initialValue: 'John',

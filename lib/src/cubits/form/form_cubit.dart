@@ -1,11 +1,10 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-
+import 'package:equatable/equatable.dart';
 import 'package:validation_form/validation_form.dart';
 
 part 'form_state.dart';
 
-abstract class FormCubit extends Cubit<FormState> with _Allies {
+abstract class FormCubit extends Cubit<FormState> with _FormAllies {
   FormCubit() : super(const FormState());
 
   List<FieldCubit> _fields = [];
@@ -18,9 +17,10 @@ abstract class FormCubit extends Cubit<FormState> with _Allies {
 
   bool get initialized => _initialized;
 
+  bool get isEdit => false;
+
   void initialize([BuildContext? context, dynamic data]) {
     this.context = context;
-
     _fields = initializeFields(data);
     _addStreamToFields();
     setShowErrorOnAllFields();
@@ -64,15 +64,27 @@ abstract class FormCubit extends Cubit<FormState> with _Allies {
       for (final field in fields) field.state.attribute: field.state.errors
     };
 
-    bool passes = errors.values.expand((error) => error).toList().isEmpty;
+    bool passes = isEdit
+        ? _isPassesEdit()
+        : errors.values.expand((error) => error).toList().isEmpty;
 
     FormStatus status = passes ? FormStatus.enable : FormStatus.disable;
 
     emit(state.copyWith(status: status, errors: errors));
   }
+
+  bool _isPassesEdit() {
+    bool noInvalid = !fields.any((field) => field.state.isInvalid);
+    bool anyValid = fields.any((field) => field.state.isValid);
+    bool anyInitial = fields.any((field) => field.state.isInitial);
+
+    bool noEveryInitial = !fields.every((field) => field.state.isInitial);
+
+    return noInvalid && (anyValid && anyInitial || noEveryInitial);
+  }
 }
 
-mixin _Allies on Cubit<FormState> {
+mixin _FormAllies on Cubit<FormState> {
   FormStatus get status => state.status;
 
   bool get isEnable => status.isEnable;

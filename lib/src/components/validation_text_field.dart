@@ -34,15 +34,21 @@ class _ValidationTextFieldState extends State<ValidationTextField> {
   void initState() {
     _controller = widget.controller ?? TextEditingController();
     _controller.text = widget.cubit.state.initialValue;
-    _controller.addListener(() => widget.cubit.setValue(_controller.text));
+    _controller.addListener(_controllerListener);
     _subscription = widget.cubit.stream.listen(_cubitListener);
     super.initState();
   }
 
   void _cubitListener(FieldState state) {
     if (state.status.isInitial) {
+      _controller.removeListener(_controllerListener);
       _controller.text = state.value;
+      _controller.addListener(_controllerListener);
     }
+  }
+
+  void _controllerListener() {
+    widget.cubit.setValue(_controller.text);
   }
 
   @override

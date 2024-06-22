@@ -225,17 +225,10 @@ void main() {
       expect(message, 'The youtubeUrl field must be a valid YouTube URL.');
     });
 
-    test('Is Egyptian Phone', () {
+    test('Is Phone', () {
       final message =
-          defaultValidationMessages[ValidationNames.isEgyptianPhone]!('phone');
-      expect(message, 'The phone field must be a valid Egyptian phone number.');
-    });
-
-    test('Is Saudi Phone', () {
-      final message =
-          defaultValidationMessages[ValidationNames.isSaudiPhone]!('phone');
-      expect(message,
-          'The phone field must be a valid Saudi Arabian phone number.');
+          defaultValidationMessages[ValidationNames.isPhone]!('phone');
+      expect(message, 'The phone field must be a valid phone number.');
     });
 
     test('Username Format', () {

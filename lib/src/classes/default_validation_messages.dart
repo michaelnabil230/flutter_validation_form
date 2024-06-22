@@ -76,10 +76,8 @@ Map<String, ValidationMessage> defaultValidationMessages = {
       'The $attribute field must be a valid Facebook URL.',
   ValidationNames.notValidYoutubeUrl: (attribute, [_ = const []]) =>
       'The $attribute field must be a valid YouTube URL.',
-  ValidationNames.isEgyptianPhone: (attribute, [_ = const []]) =>
-      'The $attribute field must be a valid Egyptian phone number.',
-  ValidationNames.isSaudiPhone: (attribute, [_ = const []]) =>
-      'The $attribute field must be a valid Saudi Arabian phone number.',
+  ValidationNames.isPhone: (attribute, [_ = const []]) =>
+      'The $attribute field must be a valid phone number.',
   ValidationNames.username: (attribute, [_ = const []]) =>
       'The $attribute field must be in a valid username format.',
   ValidationNames.required: (attribute, [_ = const []]) =>

@@ -37,8 +37,7 @@ export 'numbers/max_value.dart';
 export 'numbers/min_value.dart';
 
 // Phone
-export 'phone/is_egyptian_phone.dart';
-export 'phone/is_saudi_phone.dart';
+export 'is_phone.dart';
 
 // Text
 export 'text/contains.dart';

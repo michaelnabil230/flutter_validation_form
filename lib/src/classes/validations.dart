@@ -1,3 +1,4 @@
+import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 import 'package:validation_form/validation_form.dart';
 
 class Validations {
@@ -62,9 +63,14 @@ class Validations {
 
   static Rule minValue(int min) => MinValue(min);
 
-  static Rule get isEgyptianPhone => IsEgyptianPhone();
-
-  static Rule get isSaudiPhone => IsSaudiPhone();
+  static Rule isPhone({
+    IsoCode? callerCountry,
+    IsoCode? destinationCountry,
+  }) =>
+      IsPhone(
+        callerCountry: callerCountry,
+        destinationCountry: destinationCountry,
+      );
 
   static Rule contains(String other) => Contains(other);
 

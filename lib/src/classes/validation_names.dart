@@ -65,9 +65,7 @@ class ValidationNames {
 
   static const String notValidYoutubeUrl = 'not_valid_youtube_url';
 
-  static const String isEgyptianPhone = 'is_egyptian_phone';
-
-  static const String isSaudiPhone = 'is_saudi_phone';
+  static const String isPhone = 'is_phone';
 
   static const String username = 'username';
 

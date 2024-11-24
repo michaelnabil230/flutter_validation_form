@@ -10,7 +10,7 @@ To use this library in your Flutter project, add the following dependency to you
 
 ```yaml
 dependencies:
-  validation_form: "^0.0.4"
+  validation_form: "^0.0.6"
 ```
 
 ## 🎮 How To Use

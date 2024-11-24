@@ -1,6 +1,6 @@
 name: validation_form
 description: "Reactive Forms heavily inspire this model-driven approach to handling form inputs and validations."
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/michaelnabil230/flutter_validation_form
 
 environment:

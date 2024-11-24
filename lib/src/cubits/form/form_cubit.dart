@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:validation_form/validation_form.dart';
 
 part 'form_state.dart';
@@ -11,16 +11,13 @@ abstract class FormCubit extends Cubit<FormState> with _FormAllies {
 
   List<FieldCubit> get fields => _fields;
 
-  BuildContext? context;
-
   bool _initialized = false;
 
   bool get initialized => _initialized;
 
   bool get isEdit => false;
 
-  void initialize([BuildContext? context, dynamic data]) {
-    this.context = context;
+  void initialize([dynamic data]) {
     _fields = initializeFields(data);
     _addStreamToFields();
     setShowErrorOnAllFields();

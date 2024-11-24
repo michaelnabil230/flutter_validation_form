@@ -9,12 +9,10 @@ class TestFormCubit extends FormCubit {
   @override
   List<FieldCubit> initializeFields(_) {
     field1 = FieldCubit(
-      context: null,
       attribute: 'field1',
       rules: () => [Validations.required],
     );
     field2 = FieldCubit(
-      context: null,
       attribute: 'field2',
       rules: () => [Validations.required],
     );
@@ -34,12 +32,10 @@ class TestForm2Cubit extends FormCubit {
   @override
   List<FieldCubit> initializeFields(_) {
     field1 = FieldCubit(
-      context: null,
       attribute: 'field1',
       rules: () => [Validations.required],
     );
     field2 = FieldCubit(
-      context: null,
       attribute: 'field2',
       rules: () => [Validations.required],
     );
@@ -116,7 +112,7 @@ void main() {
       final formCubit = TestFormCubit();
 
       for (final field in formCubit.fields) {
-        field.setValue('John');
+        field.setValue('Michael');
       }
 
       formCubit.refresh();

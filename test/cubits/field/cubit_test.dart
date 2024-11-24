@@ -9,7 +9,6 @@ void main() {
     setUp(() {
       mockRequiredRule = Required();
       fieldCubit = FieldCubit(
-        context: null,
         attribute: 'name',
         initialValue: '',
         rules: () => [mockRequiredRule],
@@ -27,9 +26,9 @@ void main() {
     });
 
     test('setValue should update the value and run validation', () {
-      fieldCubit.setValue('John');
+      fieldCubit.setValue('Michael');
 
-      expect(fieldCubit.state.value, 'John');
+      expect(fieldCubit.state.value, 'Michael');
       expect(fieldCubit.state.errors, isEmpty);
     });
 
@@ -41,7 +40,7 @@ void main() {
     });
 
     test('reset should reset the state to initial values', () {
-      fieldCubit.setValue('John');
+      fieldCubit.setValue('Michael');
       fieldCubit.errorsCheck();
       fieldCubit.reset();
 

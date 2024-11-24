@@ -2,6 +2,7 @@ import 'package:example/cubits/profile/profile_cubit.dart';
 import 'package:example/cubits/profile/profile_form.dart';
 import 'package:flutter/material.dart' hide FormState;
 import 'package:validation_form/validation_form.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -29,13 +30,8 @@ class _ProfileViewState extends State<_ProfileView> {
   @override
   void initState() {
     _profileFormCubit = context.read<ProfileForm>();
-    _profileFormCubit.initialize(
-      context,
-      UserDate(
-        name: 'Michael',
-        email: 'michael@example.com',
-      ),
-    );
+    _profileFormCubit
+        .initialize(UserDate(name: 'Michael', email: 'michael@example.com'));
     super.initState();
   }
 

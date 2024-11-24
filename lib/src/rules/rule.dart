@@ -1,4 +1,4 @@
-import 'package:validation_form/src/classes/default_validation_messages.dart';
+import 'package:validation_form/src/classes/validation_messages.dart';
 import 'package:validation_form/src/types/index.dart';
 
 export 'package:validation_form/src/classes/validation_names.dart';
@@ -16,7 +16,7 @@ abstract class Rule {
 
   String get error {
     return customValidationMessage == null
-        ? defaultValidationMessages[name]!.call(attribute, parameters)
+        ? ValidationMessages.defaultMessages[name]!.call(attribute, parameters)
         : customValidationMessage!.call(attribute, parameters);
   }
 }

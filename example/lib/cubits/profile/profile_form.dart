@@ -13,14 +13,12 @@ class ProfileForm extends FormCubit {
     data as UserDate;
 
     name = FieldCubit(
-      context: context,
       attribute: 'name',
       initialValue: data.name,
       rules: () => [Validations.required],
     );
 
     email = FieldCubit(
-      context: context,
       attribute: 'email',
       initialValue: data.email,
       validationMessages: {

@@ -2,6 +2,7 @@ import 'package:example/cubits/login/login_cubit.dart';
 import 'package:example/cubits/login/login_form.dart';
 import 'package:flutter/material.dart' hide FormState;
 import 'package:validation_form/validation_form.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -29,7 +30,7 @@ class _LoginViewState extends State<_LoginView> {
   @override
   void initState() {
     _loginFormCubit = context.read<LoginForm>();
-    _loginFormCubit.initialize(context, UserDate(email: 'michael@example.com'));
+    _loginFormCubit.initialize(UserDate(email: 'michael@example.com'));
     super.initState();
   }
 

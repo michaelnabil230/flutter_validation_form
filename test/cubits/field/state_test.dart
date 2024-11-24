@@ -6,13 +6,13 @@ void main() {
     test('should be initialized with default values', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
       );
 
       expect(fieldState.attribute, 'name');
-      expect(fieldState.value, 'John');
-      expect(fieldState.initialValue, 'John');
+      expect(fieldState.value, 'Michael');
+      expect(fieldState.initialValue, 'Michael');
       expect(fieldState.errors, isEmpty);
       expect(fieldState.status, FieldStatus.initial);
     });
@@ -20,8 +20,8 @@ void main() {
     test('should set status to invalid if errors are present', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
         errors: ['Invalid value'],
       );
 
@@ -31,8 +31,8 @@ void main() {
     test('should set status to valid if value is not empty and no errors', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
       );
 
       expect(fieldState.status, FieldStatus.initial);
@@ -51,8 +51,8 @@ void main() {
     test('error should be the first error in the list', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
         errors: ['Error 1', 'Error 2'],
         showError: true,
       );
@@ -63,8 +63,8 @@ void main() {
     test('should indicate if the state is initial', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
       );
 
       expect(fieldState.isInitial, isTrue);
@@ -73,8 +73,8 @@ void main() {
     test('should indicate if the state is valid', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
       );
 
       expect(fieldState.isValid, isFalse);
@@ -83,8 +83,8 @@ void main() {
     test('should indicate if the state is invalid', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
         errors: ['Invalid value'],
       );
 
@@ -94,8 +94,8 @@ void main() {
     test('copyWith should create a new instance with updated values', () {
       const original = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
       );
 
       final copied = original.copyWith(value: 'Jane');
@@ -106,21 +106,21 @@ void main() {
     test('toString should generate a readable representation', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
       );
 
       expect(
         fieldState.toString(),
-        'FieldState(attribute: name, initialValue: John, value: John, showError: false, errors: [], status: FieldStatus.initial)',
+        'FieldState(attribute: name, initialValue: Michael, value: Michael, showError: false, errors: [], status: FieldStatus.initial)',
       );
     });
 
     test('props should contain all the relevant properties', () {
       const fieldState = FieldState(
         attribute: 'name',
-        value: 'John',
-        initialValue: 'John',
+        value: 'Michael',
+        initialValue: 'Michael',
       );
 
       expect(

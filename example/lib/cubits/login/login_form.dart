@@ -17,17 +17,16 @@ class LoginForm extends FormCubit {
   bool get isAdmin => _isAdminNotifier.value;
 
   @override
-  void initialize([BuildContext? context, dynamic data]) {
+  void initialize([dynamic data]) {
     _isAdminNotifier = ValueNotifier(true);
-    super.initialize(context, data);
+    super.initialize(data);
   }
 
   @override
-  List<FieldCubit> initializeFields(data) {
+  List<FieldCubit> initializeFields(dynamic data) {
     data as UserDate;
 
     name = FieldCubit(
-      context: context,
       attribute: 'name',
       rules: () => [
         Validations.required,
@@ -35,7 +34,6 @@ class LoginForm extends FormCubit {
     );
 
     email = FieldCubit(
-      context: context,
       attribute: 'email',
       validationMessages: {
         ValidationNames.required: (attribute, [_ = const []]) =>
@@ -49,7 +47,6 @@ class LoginForm extends FormCubit {
     );
 
     password = FieldCubit(
-      context: context,
       attribute: 'password',
       rules: () => [
         Validations.required,
@@ -59,7 +56,6 @@ class LoginForm extends FormCubit {
     );
 
     passwordConfirm = FieldCubit(
-      context: context,
       attribute: 'password_confirm',
       rules: () => [
         Validations.required,

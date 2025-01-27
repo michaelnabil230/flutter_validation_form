@@ -10,10 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.0.0
   email_validator: ^3.0.0
   equatable: ^2.0.7
-  phone_numbers_parser: ^9.0.2
+  phone_numbers_parser: ^9.0.3
 
 dev_dependencies:
   flutter_test:

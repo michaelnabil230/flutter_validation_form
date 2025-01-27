@@ -17,13 +17,13 @@ void main() {
     });
 
     test('returns true for matching strings with case sensitivity', () {
-      final rule = Validations.match('Hello', caseSensitive: true);
+      final rule = Validations.match('Hello');
       final isValid = rule.isValid('Hello');
       expect(isValid, true);
     });
 
     test('returns false for non-matching strings with case sensitivity', () {
-      final rule = Validations.match('Hello', caseSensitive: true);
+      final rule = Validations.match('Hello');
       final isValid = rule.isValid('hello');
       expect(isValid, false);
     });

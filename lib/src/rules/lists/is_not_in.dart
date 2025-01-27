@@ -1,5 +1,5 @@
-import 'package:validation_form/src/rules/rule.dart';
 import 'package:validation_form/src/rules/lists/is_in.dart';
+import 'package:validation_form/src/rules/rule.dart';
 
 class IsNotIn extends Rule {
   final List<String> list;

@@ -34,7 +34,7 @@ class _ValidationTextFieldState extends State<ValidationTextField> {
   @override
   void initState() {
     _controller = widget.controller ?? TextEditingController();
-    _controller.text = widget.cubit.state.initialValue;
+    _controller.text = widget.cubit.state.value;
     _controller.addListener(_controllerListener);
     _subscription = widget.cubit.stream.listen(_cubitListener);
     super.initState();

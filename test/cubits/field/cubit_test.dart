@@ -10,7 +10,6 @@ void main() {
       mockRequiredRule = Required();
       fieldCubit = FieldCubit(
         attribute: 'name',
-        initialValue: '',
         rules: () => [mockRequiredRule],
       );
     });

@@ -5,7 +5,6 @@ void main() {
   group('Password', () {
     test('should return true for a valid password', () {
       final rule = Validations.password(
-        min: 8,
         lowercase: true,
         uppercase: true,
         numbers: true,
@@ -18,7 +17,6 @@ void main() {
 
     test('should return false for an invalid password', () {
       final rule = Validations.password(
-        min: 8,
         lowercase: true,
         uppercase: true,
         numbers: true,

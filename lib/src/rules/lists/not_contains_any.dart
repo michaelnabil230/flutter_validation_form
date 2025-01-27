@@ -1,5 +1,5 @@
-import 'package:validation_form/src/rules/rule.dart';
 import 'package:validation_form/src/rules/lists/contains_any.dart';
+import 'package:validation_form/src/rules/rule.dart';
 
 class NotContainsAny extends Rule {
   final List<String> list;
